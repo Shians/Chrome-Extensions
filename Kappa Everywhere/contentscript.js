@@ -380,7 +380,13 @@ function replace_text(element) {
                 }
                 buffer = '';
             } else {
-                buffer += word;
+                if (i < len-1) {
+                    if (word != " " || !(split[i+1] in emote_dict)) {
+                        buffer += word;
+                    }
+                } else {
+                    buffer += word;
+                }                
                 if (i == len-1) {
                     if (buffer != element.nodeValue) {
                         txt = document.createTextNode(buffer);
